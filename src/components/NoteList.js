@@ -15,7 +15,6 @@ import {style} from '../assets/styles';
 
 const NoteList=(props)=> {
     const {navigation}=props;
-    console.log(navigation);
     let [noteList,setNoteList]=useState([]);
     const [successid,setSucessid]=useState(0)
     const fetchNotes=()=>{
@@ -43,7 +42,7 @@ const NoteList=(props)=> {
             <View>
                 <TouchableHighlight 
                 style={style.AddButton}
-                onPress={()=>navigation.navigate('New Note',{resetNoteList})}>
+                onPress={()=>navigation.navigate('New Note')}>
                     <Text style={style.ButtonText}>Add</Text>
                 </TouchableHighlight>
                 

@@ -10,17 +10,13 @@ import {style} from '../assets/styles';
 import {saveNote,getNoteById} from '../helper/NoteHelper';
 import {AppMessages} from '../utils/AppMessages';
 
-
 const NewNote=(props)=> {
-    console.log(props)
      const [title,setTitle]=useState('');
      const [note,setNote]=useState('');
 
      const isNoteExists=()=>{
        return  getNoteById(title.trim())
-         
      }
-
      const clearFields=()=>{
          setTitle('');
          setNote('');
@@ -36,16 +32,12 @@ const NewNote=(props)=> {
            const val= isNoteExists(title).then(response=>{
                 if(!response)
               {
-                  //
                   saveNote(title.trim(),note.trim())
                   Alert.alert(AppMessages.headers.success,
                     'Note saved successfully!Do you want to add another one?',
                   [{
                       text:'No',
-                      onPress:()=>{
-                                   
-                                   props.navigation.pop()
-                                  }
+                      onPress:props.navigation.pop()
                   },{
                       text:'Yes',
                       onPress:clearFields
@@ -55,8 +47,6 @@ const NewNote=(props)=> {
               else
               Alert.alert(AppMessages.headers.error,'Note Title Already Exists')
             })
-
-            //check if title exists
         }
     }
     return (
